@@ -40,6 +40,12 @@ const addParticipant = () => {
 .list{
   color: black;
 }
+input {
+  padding: 8px;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 button {
   margin-left: 8px;
 }

@@ -6,4 +6,4 @@ import ParticipantList from "./components/ParticipantList.vue";
   <ParticipantList />
 </template>
 
-<style scoped></style>
+<style></style>
