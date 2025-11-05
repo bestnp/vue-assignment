@@ -1,24 +1,33 @@
 <template>
   <div class="course-list">
     <div class="course-card">
-      <h3>ชื่อคอร์ส: {{ Courses.title }}</h3>
-      <p>ราคา: {{ Courses.price }} บาท</p>
-      <button @click="addToFavorite">เพิ่มในรายการโปรด</button>
+      <div>
+        <h3>ชื่อคอร์ส: {{ course.title }}</h3>
+        <p>ราคา: {{ course.price }} บาท</p>
+      </div>
+      <button
+        :disabled="!favoriteStore.username"
+        @click="addToFavorite"
+      >
+        เพิ่มในรายการโปรด
+      </button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { useFavoriteStore } from "../stores/favoriteStore";
-const props = defineProps({course: {
+import { useFavoriteStore } from "../stores/favorite";
+const props = defineProps({
+  course: {
     type: Object,
-    required: true,
-  },
+    required: true
+  }
 });
 const favoriteStore = useFavoriteStore();
-const addToFavorite = () => favoriteStore.add(props.course);
-// TODO: import { useFavoriteStore } แล้วเขียนฟังก์ชันเพิ่มคอร์สลง store
-// TODO: defineProps({ course: Object })
+const addToFavorite = () => {
+  if (!favoriteStore.username) return;
+  favoriteStore.addFavorite(props.course);
+};
 </script>
 
 <style scoped>
