@@ -1,3 +1,19 @@
+import { defineStore } from "pinia";
+
+export const useFavoriteStore = defineStore("favorite", {
+    state: () => ({
+        username: "",
+        favorites: [],
+    }),
+    actions: {
+        setUsername(name: string) {
+            this.username = name;
+        },
+        addFavorite(course: any) {
+            this.favorites.push(course);
+        },
+    },
+});
 // TODO1: สร้าง store ชื่อ useFavoriteStore
 // state:
 //   username (string)
